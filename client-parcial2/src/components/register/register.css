@@ -1,0 +1,79 @@
+.sectionPadre {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent);
+  }
+  
+  .h1Register {
+    color: aliceblue;
+    margin-bottom: 30px;
+  }
+  
+  .h2Register {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -20px;
+    color: aliceblue;
+  }
+  
+  .divRegister {
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    background-color: var(--bg-login);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .divRegister:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .textFieldRegister {
+    color: white !important;
+    background-color: aliceblue;
+    text-decoration: aliceblue;
+  }
+  
+  .btnRegister {
+    width: 150px;
+    border: none;
+    border-radius: 10px;
+    padding: 0.4rem;
+    margin-top: 10px;
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically (optional) */
+    text-align: center; /* Center text horizontally */
+    margin: 0 auto;
+    background-color: var(--text-inverted);
+    color: var(--text);
+    gap: 0.8rem;
+    margin-top: 30px;
+  }
+  
+  .btnRegister:hover {
+    background-color: var(--selection-day-color);
+    color: var(--text-inverted);
+  }
+  
+  .boxContainer {
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .divRegister {
+      width: 50%;
+    }
+  }
+  
