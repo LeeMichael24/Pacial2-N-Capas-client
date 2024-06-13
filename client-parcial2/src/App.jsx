@@ -15,6 +15,7 @@ import AppointmentDetail from './views/doctor/appointmentList/appointmentDetail/
 import CrearCitaDoc from './views/doctor/crearCitaDoc/crearCitaDoc'
 import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './context/AuthProvider';
+import PrescriptionPerId from './views/doctor/prescriptionPerId/prescriptionPerId';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
               <Route path="/doctorHome/crearCita" element={<CrearCitaDoc />} />
               <Route path="/doctorHome/appointmentList" element={<AppointmentList />} />
               <Route path="/doctorHome/appointmentDetail/:appointmentId" element={<AppointmentDetail />} />
+              <Route path="/doctorHome/prescriptionPerId" element={< PrescriptionPerId/>} />
               {/* </Route> */}
 
             <Route path="*" element={<Missing />} />
