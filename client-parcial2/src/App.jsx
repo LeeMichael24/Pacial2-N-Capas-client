@@ -16,6 +16,7 @@ import CrearCitaDoc from "./views/doctor/crearCitaDoc/crearCitaDoc";
 import PrivateRoute from "./components/PrivateRoute";
 import { AuthProvider } from "./context/AuthProvider";
 import Admin from "./views/admin/admin";
+import AssistantHome from "./views/secretaria/assistantHome";
 
 
 function App() {
@@ -65,8 +66,11 @@ function App() {
               element={<AppointmentDetail />}
             />
 
+            {/* ASISTANT */}
+            <Route path="/asistant" element={<AssistantHome />} />
 
-              {/* ADMIN */}
+
+            {/* ADMIN */}
             <Route path="/admin" element={<Admin/>} />
 
 

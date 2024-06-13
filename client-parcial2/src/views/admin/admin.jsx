@@ -11,7 +11,6 @@ function Admin() {
 
     const buttons = [
         { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
-        { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
       ];
 
 
