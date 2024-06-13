@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Register() {
   const [password, setPassword] = useState("");
@@ -12,18 +13,43 @@ function Register() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-  const handleRegisterClick = (event) => {
-    event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+  const handleRegisterClick = async (event) => {
+    event.preventDefault(); 
 
-    // Expresión regular para validar la contraseña
     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!_#$]).{8,32}$/;
 
     if (!passwordRegex.test(password)) {
-      toast.error("Mal formato");
-    } else {
-      toast.success("Registro exitoso!");
+      toast.error("Mal formato de contraseña");
+      return; 
+    }
+
+    try {
+      const response = await fetch('http://localhost:8080/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Registro exitoso!");
+        navigate('/login'); // Cambia '/login' por la ruta a la que deseas redirigir después del registro
+      } else {
+        throw new Error(data.message || "Error al registrarse");
+      }
+    } catch (error) {
+      toast.error(error.message);
     }
   };
+
+
 
   const reHandleLoginClick = (event) => {
     event.preventDefault();
