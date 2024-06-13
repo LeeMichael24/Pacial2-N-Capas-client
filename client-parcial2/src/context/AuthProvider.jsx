@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-import { createContext, useState } from "react";
-
-const AuthContext = createContext({});
-
-// AuthProvider es un componente que envuelve a toda la aplicación y
-// provee la información de autenticación a todos los componentes hijos que seria AuthProvider
-
-export const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState({
-    isAuthenticated: false,
-    user: null, // Aca guardaremos la info del usuario.
-  });
-
-  return (
-    <AuthContext.Provider value={{ auth, setAuth }}>
-=======
 import React, { useState, useEffect, createContext } from 'react';
 
 export const AuthContext = createContext();
@@ -62,13 +45,8 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ token, userRole, updateToken, logout }}>
->>>>>>> 2596d2d76282aba352f5ed1a33d8a32761358d7f
       {children}
     </AuthContext.Provider>
   );
 };
-<<<<<<< HEAD
 
-export default AuthContext;
-=======
->>>>>>> 2596d2d76282aba352f5ed1a33d8a32761358d7f
