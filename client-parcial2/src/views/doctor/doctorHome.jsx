@@ -2,24 +2,24 @@ import "./doctorHome.css";
 import Navbar from "../../components/navbar/navbar";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import Menu from "../../components/menu/menu";
-import PrescriptionForm from "./preinscriptionFrom/prescriptionForm";
+import AppointmentList from "./prescriptionPerId/prescriptionPerId";
 
 function DoctorHome() {
   const buttons = [
     {
       icon: <LogoutRoundedIcon />,
       name: "Crear cita médica",
-      path: "/paciente/crearCitaMedica",
+      path: "/doctorHome/crearCita",
     },
     {
       icon: <LogoutRoundedIcon />,
       name: "Record médico",
-      path: "/paciente/misCitasRecord",
+      path: "/doctorHome",
     },
     {
       icon: <LogoutRoundedIcon />,
       name: "Prescipciones médicas",
-      path: "/paciente/misPrescipciones",
+      path: "/doctorHome/appointmentList",
     },
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
   ];
@@ -29,7 +29,7 @@ function DoctorHome() {
       <Navbar />
       <div className="UserHome">
         <div className="left-container-user leftDoctor">
-          <PrescriptionForm />
+          <AppointmentList/>
         </div>
         <div className="right-container-user">
           <Menu buttons={buttons} />

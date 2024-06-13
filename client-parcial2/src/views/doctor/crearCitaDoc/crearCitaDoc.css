@@ -1,0 +1,9 @@
+.hijoCrearCita{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boxCrearCitasDoc{
+    display: inline;
+}

@@ -10,6 +10,10 @@ import CrearCitaPaciente from './views/paciente/crearCita/crearCitaPaciente'
 import RecordPaciente from './views/paciente/crearCita/recordPaciente/recordPaciente'
 import RecordDetailPaciente from './views/paciente/crearCita/recordPaciente/recordDetailPaciente/recordDetailPaciente'
 import DoctorHome from './views/doctor/doctorHome'
+import PrescriptionPerId from './views/doctor/prescriptionPerId/prescriptionPerId'
+import AppointmentList from './views/doctor/appointmentList/apointmentList'
+import AppointmentDetail from './views/doctor/appointmentList/appointmentDetail/AppointmentDetail'
+import CrearCitaDoc from './views/doctor/crearCitaDoc/crearCitaDoc'
 
 function App() {
 
@@ -36,6 +40,9 @@ function App() {
 
           {/* doctor */}
           <Route path="/doctorHome" element={<DoctorHome />} />
+          <Route path="/doctorHome/crearCita" element={<CrearCitaDoc />} />
+          <Route path="/doctorHome/appointmentList" element={<AppointmentList />} />
+          <Route path="/doctorHome/appointmentList/:id" element={<AppointmentDetail />} />
 
 
           <Route path='*' element={<Missing />} />

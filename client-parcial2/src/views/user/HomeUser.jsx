@@ -1,16 +1,20 @@
+import React, { useState } from "react";
 import Navbar from "../../components/navbar/navbar";
 import Menu from "../../components/menu/menu";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-/* import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'; */ // Importa el DateTimePicker
-import './HomeUser.css'
+import './HomeUser.css';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "../../api/axios"; // Importa la instancia de Axios
 
 function HomeUser() {
-  const navigate = useNavigate('');
+  const navigate = useNavigate();
+
+  const [comentario, setComentario] = useState("");
+  const [requestedDate, setRequestedDate] = useState("");
 
   const buttons = [
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
@@ -18,11 +22,36 @@ function HomeUser() {
 
   const handlerClick = (e) => {
     e.preventDefault();
-    toast.success("Cita creada exitosamente!");
-    toast.success("Ahora eres paciente!");
-    setTimeout(() => {
-      navigate('/paciente');
-    }, 2000);
+
+    // Crear el objeto de datos que se enviará
+    const data = {
+      comentario: comentario,
+      requested_date: requestedDate,
+    };
+
+    // Obtener el token JWT del almacenamiento local (localStorage)
+    const token = localStorage.getItem('token');
+
+    // Configurar los encabezados para incluir el token JWT
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    };
+
+    // Hacer el POST a la API usando Axios con los encabezados configurados
+    axios.post("/appointment/request", data, config)
+      .then((response) => {
+        toast.success("Cita creada exitosamente!");
+        toast.success("Ahora eres paciente!");
+        setTimeout(() => {
+          navigate('/paciente');
+        }, 2000);
+      })
+      .catch((error) => {
+        toast.error("Error al crear la cita");
+        console.error("There was an error creating the appointment!", error);
+      });
   }
 
   return (
@@ -46,29 +75,23 @@ function HomeUser() {
                   <TextField
                     id="outlined-comentary"
                     label="Describe your symptoms"
-                    type="comentary"
+                    type="text"
                     className="textFieldLogin"
+                    value={comentario}
+                    onChange={(e) => setComentario(e.target.value)}
                   />
                 </div>
                 <div>
                   <TextField
                     id="outlined-date"
                     label=""
-                    type="Date"
+                    type="date"
                     className="textFieldLogin"
-                  />
-                </div>
-                <div>
-                  <TextField
-                    id="outlined-date"
-                    label=""
-                    type="Time"
-                    className="textFieldLogin"
+                    value={requestedDate}
+                    onChange={(e) => setRequestedDate(e.target.value)}
                   />
                 </div>
               </Box>
-              {/* Aquí se integra el DateTimePicker */}
-              {/* <DateTimePicker /> */}
               <button className="btnUserHome" onClick={handlerClick}>
                 Agendar Cita
               </button>
