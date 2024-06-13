@@ -18,6 +18,7 @@ function HomeUser() {
 
   const buttons = [
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
+    { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
   ];
 
   const handlerClick = (e) => {

@@ -1,3 +1,4 @@
+
 import './App.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Layout from './components/layout/layout';
@@ -16,6 +17,7 @@ import CrearCitaDoc from './views/doctor/crearCitaDoc/crearCitaDoc'
 import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './context/AuthProvider';
 import PrescriptionPerId from './views/doctor/prescriptionPerId/prescriptionPerId';
+import Admin from "./views/admin/admin";
 
 
 function App() {
@@ -39,12 +41,25 @@ function App() {
             {/* Paciente */}
             <Route element={<PrivateRoute allowedRoles={['PSNT']} />}>
               <Route path="/paciente" element={<PacienteHome />} />
-              <Route path="/paciente/appointment/request" element={<CrearCitaPaciente />} />
-              <Route path="/paciente/user/record" element={<RecordPaciente />} />
-              <Route path="/paciente/user/record/:id" element={<RecordDetailPaciente />} />
+              <Route
+                path="/paciente/appointment/request"
+                element={<CrearCitaPaciente />}
+              />
+              <Route
+                path="/paciente/user/record"
+                element={<RecordPaciente />}
+              />
+              <Route
+                path="/paciente/user/record/:id"
+                element={<RecordDetailPaciente />}
+              />
             </Route>
 
-            {/* doctor */}
+
+              {/* ADMIN */}
+            <Route path="/admin" element={<Admin/>} />
+
+
             {/* <Route element={<PrivateRoute allowedRoles={['DOCT']} />}> */}
               <Route path="/doctorHome" element={<DoctorHome />} />
               <Route path="/doctorHome/crearCita" element={<CrearCitaDoc />} />
@@ -52,6 +67,7 @@ function App() {
               <Route path="/doctorHome/appointmentDetail/:appointmentId" element={<AppointmentDetail />} />
               <Route path="/doctorHome/prescriptionPerId" element={< PrescriptionPerId/>} />
               {/* </Route> */}
+
 
             <Route path="*" element={<Missing />} />
           </Route>

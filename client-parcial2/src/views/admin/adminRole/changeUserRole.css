@@ -1,0 +1,57 @@
+.change-role-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.change-role-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.change-role-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.change-role-container label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.change-role-container input,
+.change-role-container select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.change-role-container button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.change-role-container button:hover {
+  background-color: #0056b3;
+}
+
+.change-role-container .error {
+  color: red;
+  font-weight: bold;
+}
+
+.divRowRole{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
