@@ -27,6 +27,7 @@ function HomeUser() {
     { icon: < LocalHospitalIcon />, name: "DOCT", path: "/doctorHome" },
     { icon: <SupervisorAccountIcon />, name: "PSNT", path: "/login" },
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
+    { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
   ];
 
   const handlerClick = (e) => {
