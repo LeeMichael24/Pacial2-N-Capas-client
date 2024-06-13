@@ -1,81 +1,110 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import './prescriptionPerId.css'
 
-
-const AppointmentsData = [
-  { id: 1, description: "Consulta General", date: "2024-06-20", finished: false },
-  { id: 2, description: "Control de Rutina", date: "2024-06-22", finished: true },
-  { id: 3, description: "Exámen de Laboratorio", date: "2024-06-25", finished: false },
-  { id: 4, description: "Consulta Especializada", date: "2024-06-28", finished: false },
-];
-
-function AppointmentList() {
+function PrescriptionPerId() {
+  const [appointments, setAppointments] = useState([]);
   const [filter, setFilter] = useState("all");
+  const [userId, setUserId] = useState("");
+  const [prescriptions, setPrescriptions] = useState([]);
+
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/appointment/citas", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        const data = await response.json();
+        setAppointments(data.data);
+      } catch (error) {
+        console.error("Error fetching appointments:", error);
+      }
+    };
+
+    fetchAppointments();
+  }, []);
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
 
-  const filteredAppointments = AppointmentsData.filter((appointment) => {
+
+  const handleSearchClick = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/clinic/prescriptions/${userId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      const data = await response.json();
+      setPrescriptions(data.data);
+    } catch (error) {
+      console.error("Error fetching prescriptions:", error);
+    }
+  };
+
+  const filteredAppointments = appointments.filter((appointment) => {
     if (filter === "finished") {
-      return appointment.finished;
+      return appointment.status === "Finalizado";
     } else if (filter === "available") {
-      return !appointment.finished;
+      return appointment.status !== "Finalizado";
     }
     return true;
   });
 
   return (
     <div className="appointment-list">
-      <h2 className="h2ListApp">Listado de Citas</h2>
-      <div className="filters">
-        <label>
-          <input
-            type="radio"
-            value="all"
-            checked={filter === "all"}
-            onChange={handleFilterChange}
-          />
-          Todas
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="finished"
-            checked={filter === "finished"}
-            onChange={handleFilterChange}
-          />
-          Finalizadas
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="available"
-            checked={filter === "available"}
-            onChange={handleFilterChange}
-          />
-          Disponibles
-        </label>
-      </div>
+      <h2 className="h2ListApp">Buscar Prescripcion</h2>
+
       <ul>
         {filteredAppointments.map((appointment) => (
           <li key={appointment.id}>
             <Link
-              to={`/doctorHome/appointmentList/${appointment.id}`} // Aquí se construye la ruta dinámica
-              className={`appointment-item ${appointment.finished ? "finished" : "available"}`}
+              className={`appointment-item ${appointment.status === "Finalizado" ? "finished" : "available"}`}
             >
               <div>
-                <h3>{appointment.description}</h3>
-                <p>Fecha: {appointment.date}</p>
+                <h3>Paciente: {appointment.user.name}</h3>
+                <p>ID: {appointment.user.id}</p>
               </div>
-              <button>Agregar Prescripción</button>
             </Link>
           </li>
         ))}
       </ul>
+
+      <div className="appointment-list">
+      <h2 className="h2ListApp">Buscar Prescripcion</h2>
+      <input
+        type="text"
+        value={userId}
+        onChange={(e) => setUserId(e.target.value)}
+        placeholder="Ingrese el ID del usuario"
+      />
+      <button onClick={handleSearchClick}>Buscar Prescripción</button>
+      <ul>
+        {prescriptions.map((prescription) => (
+          <li key={prescription.id}>
+            <div className="prescription-item">
+              <h3>Prescripción ID: {prescription.id}</h3>
+              <p>Medicina: {prescription.medicine}</p>
+              <p>Dosis: {prescription.dose}</p>
+              <p>Fecha Fin: {prescription.fechaFin}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
+
+
+
+    </div>
+
   );
 }
 
-export default AppointmentList;
+export default PrescriptionPerId;
