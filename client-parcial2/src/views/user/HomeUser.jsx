@@ -10,6 +10,12 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../../api/axios"; // Importa la instancia de Axios
 
+//iconos
+
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+
 function HomeUser() {
   const navigate = useNavigate();
 
@@ -17,6 +23,9 @@ function HomeUser() {
   const [requestedDate, setRequestedDate] = useState("");
 
   const buttons = [
+    { icon: <AdminPanelSettingsIcon />, name: "SUDO", path: "/admin" },
+    { icon: < LocalHospitalIcon />, name: "DOCT", path: "/doctorHome" },
+    { icon: <SupervisorAccountIcon />, name: "PSNT", path: "/login" },
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
   ];
 

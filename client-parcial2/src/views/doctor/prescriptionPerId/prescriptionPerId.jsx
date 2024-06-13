@@ -65,40 +65,42 @@ function PrescriptionPerId() {
       <ul>
         {filteredAppointments.map((appointment) => (
           <li key={appointment.id}>
-            <Link
-              className={`appointment-item ${appointment.status === "Finalizado" ? "finished" : "available"}`}
-            >
+            <div className={`appointment-item ${appointment.status === "Finalizado" ? "finished" : "available"}`}>
               <div>
-                <h3>Paciente: {appointment.user.name}</h3>
-                <p>ID: {appointment.user.id}</p>
+                <span>
+                  <h3>Paciente: {appointment.user.name}</h3>
+                  <p>Comentario: {appointment.commentary}</p>
+                  <p>ID: {appointment.user.id}</p>
+                </span>
               </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      <div className="appointment-list">
-      <h2 className="h2ListApp">Buscar Prescripcion</h2>
-      <input
-        type="text"
-        value={userId}
-        onChange={(e) => setUserId(e.target.value)}
-        placeholder="Ingrese el ID del usuario"
-      />
-      <button onClick={handleSearchClick}>Buscar Prescripción</button>
-      <ul>
-        {prescriptions.map((prescription) => (
-          <li key={prescription.id}>
-            <div className="prescription-item">
-              <h3>Prescripción ID: {prescription.id}</h3>
-              <p>Medicina: {prescription.medicine}</p>
-              <p>Dosis: {prescription.dose}</p>
-              <p>Fecha Fin: {prescription.fechaFin}</p>
             </div>
           </li>
         ))}
+
       </ul>
-    </div>
+
+      <div className="appointment-list">
+        <h2 className="h2ListApp">Buscar Prescripcion</h2>
+        <input
+          type="text"
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
+          placeholder="Ingrese el ID del usuario"
+        />
+        <button onClick={handleSearchClick}>Buscar Prescripción</button>
+        <ul>
+          {prescriptions.map((prescription) => (
+            <li key={prescription.id}>
+              <div className="prescription-item">
+                <h3>Prescripción ID: {prescription.id}</h3>
+                <p>Medicina: {prescription.medicine}</p>
+                <p>Dosis: {prescription.dose}</p>
+                <p>Fecha Fin: {prescription.fechaFin}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
 
 
 

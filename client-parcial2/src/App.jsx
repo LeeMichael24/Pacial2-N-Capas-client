@@ -45,13 +45,13 @@ function App() {
             </Route>
 
             {/* doctor */}
-            {/* <Route element={<PrivateRoute allowedRoles={['DOCT']} />}> */}
+            <Route element={<PrivateRoute allowedRoles={['DOCT']} />}> 
               <Route path="/doctorHome" element={<DoctorHome />} />
               <Route path="/doctorHome/crearCita" element={<CrearCitaDoc />} />
               <Route path="/doctorHome/appointmentList" element={<AppointmentList />} />
               <Route path="/doctorHome/appointmentDetail/:appointmentId" element={<AppointmentDetail />} />
               <Route path="/doctorHome/prescriptionPerId" element={< PrescriptionPerId/>} />
-              {/* </Route> */}
+             </Route> 
 
             <Route path="*" element={<Missing />} />
           </Route>
