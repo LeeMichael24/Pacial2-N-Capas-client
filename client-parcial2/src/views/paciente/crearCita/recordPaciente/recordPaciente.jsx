@@ -13,18 +13,13 @@ function RecordPaciente() {
   const buttons = [
     {
       icon: <LogoutRoundedIcon />,
-      name: "Record médico",
-      path: "/paciente/misCitasRecord",
-    },
-    {
-      icon: <LogoutRoundedIcon />,
       name: "Crear cita médica",
-      path: "/paciente/crearCitaMedica",
+      path: "/paciente/appointment/request",
     },
     {
       icon: <LogoutRoundedIcon />,
-      name: "Prescipciones médicas",
-      path: "/paciente/misPrescipciones",
+      name: "Record médico",
+      path: "/paciente/user/record",
     },
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
   ];
@@ -48,7 +43,7 @@ function RecordPaciente() {
 
   function handleCardClick(item) {
     setSelectedCard(item.id);
-    navigate(`/paciente/misCitasRecord/${item.id}`);
+    navigate(`/paciente/user/record/${item.id}`);
   }
 
   return (

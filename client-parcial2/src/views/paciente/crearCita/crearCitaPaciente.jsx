@@ -16,12 +16,12 @@ function CrearCitaPaciente() {
         {
             icon: <LogoutRoundedIcon />,
             name: "Crear cita médica",
-            path: "/paciente/crearCitaMedica",
+            path: "/paciente/appointment/request",
           },
         {
           icon: <LogoutRoundedIcon />,
           name: "Record médico",
-          path: "/paciente/misCitasRecord",
+          path: "/paciente/user/record",
         },
         /* TODO: Mis prescriociones medicas */
         {

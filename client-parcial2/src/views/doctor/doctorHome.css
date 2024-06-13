@@ -1,0 +1,11 @@
+.leftDoctor{
+    justify-content: flex-start; /* Alinea el contenido al principio */
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+    max-height: 80vh; /* Ajusta la altura máxima para permitir el desplazamiento */
+    -ms-overflow-style: none;  /* Oculta barra de desplazamiento en IE y Edge */
+    scrollbar-width: none;  /* Oculta barra de desplazamiento en Firefox */
+}
+
+.leftDoctor::-webkit-scrollbar {
+    display: none; /* Oculta barra de desplazamiento en Chrome, Safari y Opera */
+}

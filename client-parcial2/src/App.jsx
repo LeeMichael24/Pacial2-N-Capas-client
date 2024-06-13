@@ -9,6 +9,7 @@ import PacienteHome from './views/paciente/pacienteHome'
 import CrearCitaPaciente from './views/paciente/crearCita/crearCitaPaciente'
 import RecordPaciente from './views/paciente/crearCita/recordPaciente/recordPaciente'
 import RecordDetailPaciente from './views/paciente/crearCita/recordPaciente/recordDetailPaciente/recordDetailPaciente'
+import DoctorHome from './views/doctor/doctorHome'
 
 function App() {
 
@@ -27,11 +28,14 @@ function App() {
 
           {/* Paciente */}
           <Route path="/paciente" element={<PacienteHome />} />
-          <Route path="/paciente/crearCitaMedica" element={<CrearCitaPaciente />} />
+          <Route path="/paciente/appointment/request" element={<CrearCitaPaciente />} />
           {/* TODO: */}
-          <Route path="/paciente/misCitasRecord" element={<RecordPaciente />} />
-          <Route path="/paciente/misCitasRecord/:id" element={<RecordDetailPaciente />} />
+          <Route path="/paciente/user/record" element={<RecordPaciente />} />
+          <Route path="/paciente/user/record/:id" element={<RecordDetailPaciente />} />
           {/* <Route path="/paciente/misPrescipciones" element={<PacienteHome />} /> */}
+
+          {/* doctor */}
+          <Route path="/doctorHome" element={<DoctorHome />} />
 
 
           <Route path='*' element={<Missing />} />

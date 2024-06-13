@@ -1,39 +1,35 @@
-import './pacienteHome.css'
+import "./doctorHome.css";
 import Navbar from "../../components/navbar/navbar";
-import Menu from "../../components/menu/menu";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import Menu from "../../components/menu/menu";
+import PrescriptionForm from "./preinscriptionFrom/prescriptionForm";
 
-
-function PacienteHome() {
+function DoctorHome() {
   const buttons = [
     {
       icon: <LogoutRoundedIcon />,
       name: "Crear cita médica",
-      path: "/paciente/appointment/request",
+      path: "/paciente/crearCitaMedica",
     },
     {
       icon: <LogoutRoundedIcon />,
       name: "Record médico",
-      path: "/paciente/user/record",
+      path: "/paciente/misCitasRecord",
+    },
+    {
+      icon: <LogoutRoundedIcon />,
+      name: "Prescipciones médicas",
+      path: "/paciente/misPrescipciones",
     },
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
   ];
-
-
-
 
   return (
     <section className="PadreHomeUser">
       <Navbar />
       <div className="UserHome">
-        <div className="left-container-user">
-          <div className="pacienteContainer">
-            <h1>Bienvenido</h1>
-            <h2>Clínica Ya Merito</h2>
-            <p>
-              En la parte derecha de la pantalla veras una serie de botones los cuales te redirijiran hacia el contenido que quieras visualizar.
-            </p>
-          </div>
+        <div className="left-container-user leftDoctor">
+          <PrescriptionForm />
         </div>
         <div className="right-container-user">
           <Menu buttons={buttons} />
@@ -43,4 +39,4 @@ function PacienteHome() {
   );
 }
 
-export default PacienteHome;
+export default DoctorHome;
