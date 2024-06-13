@@ -1,151 +1,108 @@
-import { useState } from "react";
-import "./appointmentDetail.css"; // Importa los estilos CSS
-import Navbar from "../../../../components/navbar/navbar";
-import Menu from "../../../../components/menu/menu";
-import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-
-// Datos simulados de la cita
-const appointmentData = {
-  id: 1,
-  description: "Consulta General",
-  date: "2024-06-20",
-  patient: "Juan Pérez",
-  doctor: "Dr. Smith",
-  symptoms: "Dolor de cabeza severo",
-};
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import "./appointmentDetail.css"; // Ajustar nombre del archivo de estilos si es necesario
 
 function AppointmentDetail() {
-  const [medicine, setMedicine] = useState("");
-  const [dose, setDose] = useState("");
-  const [ffin, setFfin] = useState("");
-  const [prescriptions, setPrescriptions] = useState([]);
+  const { appointmentId } = useParams(); // Asegúrate de que coincida con el parámetro de la ruta
+  const [newPrescription, setNewPrescription] = useState([
+    {
+      medicine: "",
+      dose: "",
+      ffin: "",
+    },
+  ]);
 
-  const buttons = [
-    {
-      icon: <LogoutRoundedIcon />,
-      name: "Crear cita médica",
-      path: "/paciente/crearCitaMedica",
-    },
-    {
-      icon: <LogoutRoundedIcon />,
-      name: "Record médico",
-      path: "/paciente/misCitasRecord",
-    },
-    {
-      icon: <LogoutRoundedIcon />,
-      name: "Prescripciones médicas",
-      path: "/paciente/misPrescripciones",
-    },
-    { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
-  ];
+  const handleInputChange = (index, event) => {
+    const { name, value } = event.target;
+    setNewPrescription((prev) => {
+      const updatedPrescriptions = [...prev];
+      updatedPrescriptions[index][name] = value;
+      return updatedPrescriptions;
+    });
+  };
 
-  const handleAddPrescription = (event) => {
+  const handleAddPrescription = async (event) => {
     event.preventDefault();
-
-    if (!medicine || !dose || !ffin) {
-      alert("Por favor completa todos los campos.");
-      return;
-    }
-
-    const newPrescription = {
-      medicine,
-      dose,
-      ffin,
+    const requestData = {
+      citaMedicaId: appointmentId,
+      prescripciones: newPrescription,
     };
 
-    setPrescriptions([...prescriptions, newPrescription]);
-    setMedicine("");
-    setDose("");
-    setFfin("");
+    try {
+      const response = await fetch("http://localhost:8080/api/clinic/prescriptions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(requestData),
+      });
+      const data = await response.json();
+      // Aquí puedes manejar la respuesta, por ejemplo, limpiando el formulario o mostrando un mensaje de éxito
+      setNewPrescription([
+        {
+          medicine: "",
+          dose: "",
+          ffin: "",
+        },
+      ]);
+    } catch (error) {
+      console.error("Error adding prescription:", error);
+    }
+  };
+
+  const handleAddNewField = () => {
+    setNewPrescription((prev) => [
+      ...prev,
+      {
+        medicine: "",
+        dose: "",
+        ffin: "",
+      },
+    ]);
   };
 
   return (
-    <section className="PadreHomeUser">
-      <Navbar />
-      <div className="UserHome">
-        <div className="left-container-user leftDoctor">
-          <div className="appointment-detail">
-            <h2>Detalles de la Cita</h2>
-            <div className="details">
-              <p>
-                <span className="label">ID de Cita:</span> {appointmentData.id}
-              </p>
-              <p>
-                <span className="label">Descripción:</span>{" "}
-                {appointmentData.description}
-              </p>
-              <p>
-                <span className="label">Fecha:</span> {appointmentData.date}
-              </p>
-              <p>
-                <span className="label">Paciente:</span>{" "}
-                {appointmentData.patient}
-              </p>
-              <p>
-                <span className="label">Médico:</span> {appointmentData.doctor}
-              </p>
-              <p>
-                <span className="label">Síntomas:</span>{" "}
-                {appointmentData.symptoms}
-              </p>
-            </div>
-            <div className="prescriptions">
-              <h3>Agregar Prescripción Médica</h3>
-              <ul>
-                {prescriptions.map((prescription, index) => (
-                  <li key={index}>
-                    <p>
-                      <span className="label">Medicina:</span>{" "}
-                      {prescription.medicine}
-                    </p>
-                    <p>
-                      <span className="label">Dosis:</span> {prescription.dose}
-                    </p>
-                    <p>
-                      <span className="label">Fecha de Finalización:</span>{" "}
-                      {prescription.ffin}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <form onSubmit={handleAddPrescription}>
-              <label>
-                <span className="label">Medicina:</span>
-                <input
-                  type="text"
-                  value={medicine}
-                  onChange={(e) => setMedicine(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                <span className="label">Dosis:</span>
-                <input
-                  type="text"
-                  value={dose}
-                  onChange={(e) => setDose(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                <span className="label">Fecha de Finalización:</span>
-                <input
-                  type="date"
-                  value={ffin}
-                  onChange={(e) => setFfin(e.target.value)}
-                  required
-                />
-              </label>
-            </form>
-            <button type="submit">Agregar Prescripción</button>
+    <div className="appointment-detail">
+      <h2>Agregar Prescripción</h2>
+      <form onSubmit={handleAddPrescription}>
+        {newPrescription.map((prescription, index) => (
+          <div key={index}>
+            <label>
+              Medicamento:
+              <input
+                type="text"
+                name="medicine"
+                value={prescription.medicine}
+                onChange={(e) => handleInputChange(index, e)}
+              />
+            </label>
+            <label>
+              Dosis:
+              <input
+                type="text"
+                name="dose"
+                value={prescription.dose}
+                onChange={(e) => handleInputChange(index, e)}
+              />
+            </label>
+            <label>
+              Fecha de Fin:
+              <input
+                type="date"
+                name="ffin"
+                value={prescription.ffin}
+                onChange={(e) => handleInputChange(index, e)}
+              />
+            </label>
           </div>
-        </div>
-        <div className="right-container-user">
-          <Menu buttons={buttons} />
-        </div>
-      </div>
-    </section>
+        ))}
+        <button type="button" onClick={handleAddNewField}>
+          Agregar otra prescripción
+        </button>
+        <button type="submit">Enviar Prescripciones</button>
+      </form>
+    </div>
   );
 }
 

@@ -1,33 +1,47 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./apointmentList.css"; // Ajustar nombre del archivo de estilos si es necesario
 
-const AppointmentsData = [
-  { id: 1, description: "Consulta General", date: "2024-06-20", finished: false },
-  { id: 2, description: "Control de Rutina", date: "2024-06-22", finished: true },
-  { id: 3, description: "Exámen de Laboratorio", date: "2024-06-25", finished: false },
-  { id: 4, description: "Consulta Especializada", date: "2024-06-28", finished: false },
-];
-
 function AppointmentList() {
+  const [appointments, setAppointments] = useState([]);
   const [filter, setFilter] = useState("all");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/appointment/citas", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        const data = await response.json();
+        setAppointments(data.data);
+      } catch (error) {
+        console.error("Error fetching appointments:", error);
+      }
+    };
+
+    fetchAppointments();
+  }, []);
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
 
-  const filteredAppointments = AppointmentsData.filter((appointment) => {
+  const filteredAppointments = appointments.filter((appointment) => {
     if (filter === "finished") {
-      return appointment.finished;
+      return appointment.status === "Finalizado";
     } else if (filter === "available") {
-      return !appointment.finished;
+      return appointment.status !== "Finalizado";
     }
     return true;
   });
 
-  const handleAppointmentClick = (appointmentId) => {
-    console.log(`Seleccionaste la cita con ID: ${appointmentId}`);
-    // Aquí podrías manejar la navegación hacia la página de prescripciones médicas para el appointmentId dado
+  const handleAddPrescriptionClick = (appointmentId) => {
+    navigate(`/doctorHome/appointmentDetail/${appointmentId}`);
   };
 
   return (
@@ -65,16 +79,25 @@ function AppointmentList() {
       <ul>
         {filteredAppointments.map((appointment) => (
           <li key={appointment.id}>
-            <Link
-              to={`/doctorHome/appointmentList/${appointment.id}`}
-              className={`appointment-item ${appointment.finished ? "finished" : "available"}`}
-              onClick={() => handleAppointmentClick(appointment.id)}
-            >
-              <div>
-                <h3>{appointment.description}</h3>
-                <p>Fecha: {appointment.date}</p>
+            <Link to={`/doctorHome/appointmentDetail/${appointment.id}`}>
+              <div
+                className={`appointment-item ${appointment.status === "Finalizado" ? "finished" : "available"}`}
+              >
+                <div>
+                  <h3>{appointment.commentary}</h3>
+                  <p>Fecha Solicitada: {appointment.requestedDate}</p>
+                  <p>Paciente: {appointment.user.name}</p>
+                  <p>Estado: {appointment.status}</p>
+                  <h4>Prescripciones:</h4>
+                  {appointment.prescriptions.map((prescription, index) => (
+                    <div key={index}>
+                      <p>Medicina: {prescription.medicine}</p>
+                      <p>Dosis: {prescription.dose}</p>
+                    </div>
+                  ))}
+                </div>
+                <button onClick={() => handleAddPrescriptionClick(appointment.id)}>Agregar Prescripción</button>
               </div>
-              <button>Agregar Prescripción</button>
             </Link>
           </li>
         ))}

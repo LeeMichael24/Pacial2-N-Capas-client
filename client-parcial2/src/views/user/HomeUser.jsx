@@ -31,6 +31,7 @@ function HomeUser() {
 
     // Obtener el token JWT del almacenamiento local (localStorage)
     const token = localStorage.getItem('token');
+    console.log(token);
 
     // Configurar los encabezados para incluir el token JWT
     const config = {
