@@ -4,6 +4,12 @@ import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import Menu from "../../components/menu/menu";
 import AppointmentList from "./prescriptionPerId/prescriptionPerId";
 
+//iconos
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import ContentPasteSearchIcon from '@mui/icons-material/ContentPasteSearch';
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
+
+
 function DoctorHome() {
   const buttons = [
     {
@@ -12,18 +18,18 @@ function DoctorHome() {
       path: "/doctorHome/crearCita",
     },
     {
-      icon: <LogoutRoundedIcon />,
+      icon: <TextSnippetIcon />,
       name: "Record médico",
       path: "/doctorHome",
     },
     {
-      icon: <LogoutRoundedIcon />,
+      icon: <FormatListBulletedIcon />,
       name: "Citas",
       path: "/doctorHome/appointmentList",
     },
 
     {
-      icon: <LogoutRoundedIcon />,
+      icon: <ContentPasteSearchIcon  />,
       name: "Busar Prescripción",
       path: "/doctorHome/prescriptionPerId",
     },
