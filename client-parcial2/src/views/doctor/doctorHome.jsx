@@ -18,8 +18,14 @@ function DoctorHome() {
     },
     {
       icon: <LogoutRoundedIcon />,
-      name: "Prescipciones médicas",
+      name: "Citas",
       path: "/doctorHome/appointmentList",
+    },
+
+    {
+      icon: <LogoutRoundedIcon />,
+      name: "Busar Prescripción",
+      path: "/doctorHome/prescriptionPerId",
     },
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
   ];
@@ -29,7 +35,7 @@ function DoctorHome() {
       <Navbar />
       <div className="UserHome">
         <div className="left-container-user leftDoctor">
-          <AppointmentList/>
+          //Record Medico
         </div>
         <div className="right-container-user">
           <Menu buttons={buttons} />
