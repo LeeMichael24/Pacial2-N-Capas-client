@@ -1,0 +1,82 @@
+.h1Assis{
+    margin-bottom: 40px;
+}
+
+  .left-container-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .appointment-list {
+    margin-top: 20px;
+  }
+  
+  .appointment-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .appointment-item p {
+    margin: 5px 0;
+  }
+  
+  .appointment-item button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .appointment-item button:hover {
+    background-color: #ddd;
+  }
+  
+  .approve-form {
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 20px;
+  }
+  
+  .approve-form h2 {
+    margin-bottom: 10px;
+  }
+  
+  .approve-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .approve-form input[type="time"],
+  .approve-form input[type="number"],
+  .approve-form input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-top: 5px;
+  }
+  
+  .approve-form button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .approve-form button:hover {
+    background-color: #0056b3;
+  }
+  

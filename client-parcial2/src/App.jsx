@@ -1,4 +1,3 @@
-
 import './App.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Layout from './components/layout/layout';
@@ -18,6 +17,8 @@ import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './context/AuthProvider';
 import PrescriptionPerId from './views/doctor/prescriptionPerId/prescriptionPerId';
 import Admin from "./views/admin/admin";
+import AssistantHome from "./views/secretaria/assistantHome";
+
 
 
 function App() {
@@ -55,6 +56,13 @@ function App() {
               />
             </Route>
 
+
+            {/* ASISTANT */}
+            <Route path="/asistant" element={<AssistantHome />} />
+
+
+
+            {/* <Route element={<PrivateRoute allowedRoles={['DOCT']} />}> */}
             {/* Admin */}
             <Route element={<PrivateRoute allowedRoles={['SUDO']} />}>
               <Route path="/admin" element={<Admin />} />
@@ -68,6 +76,7 @@ function App() {
               <Route path="/doctorHome/appointmentDetail/:appointmentId" element={<AppointmentDetail />} />
               <Route path="/doctorHome/prescriptionPerId" element={< PrescriptionPerId/>} />
              </Route> 
+
 
 
             <Route path="*" element={<Missing />} />
