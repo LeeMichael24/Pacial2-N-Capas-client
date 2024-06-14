@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> bb64adcd92454758e55c18f2df5c4b8d171fc73b
 import './App.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Layout from './components/layout/layout';
@@ -17,8 +21,11 @@ import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './context/AuthProvider';
 import PrescriptionPerId from './views/doctor/prescriptionPerId/prescriptionPerId';
 import Admin from "./views/admin/admin";
+<<<<<<< HEAD
 import AssistantHome from "./views/secretaria/assistantHome";
 
+=======
+>>>>>>> bb64adcd92454758e55c18f2df5c4b8d171fc73b
 
 
 function App() {
@@ -56,6 +63,7 @@ function App() {
               />
             </Route>
 
+<<<<<<< HEAD
 
             {/* ASISTANT */}
             <Route path="/asistant" element={<AssistantHome />} />
@@ -66,12 +74,26 @@ function App() {
 
 
             {/* <Route element={<PrivateRoute allowedRoles={['DOCT']} />}> */}
+=======
+            {/* Admin */}
+            <Route element={<PrivateRoute allowedRoles={['SUDO']} />}>
+              <Route path="/admin" element={<Admin />} />
+            </Route>
+
+            {/* doctor */}
+            <Route element={<PrivateRoute allowedRoles={['DOCT']} />}> 
+>>>>>>> bb64adcd92454758e55c18f2df5c4b8d171fc73b
               <Route path="/doctorHome" element={<DoctorHome />} />
               <Route path="/doctorHome/crearCita" element={<CrearCitaDoc />} />
               <Route path="/doctorHome/appointmentList" element={<AppointmentList />} />
               <Route path="/doctorHome/appointmentDetail/:appointmentId" element={<AppointmentDetail />} />
               <Route path="/doctorHome/prescriptionPerId" element={< PrescriptionPerId/>} />
+<<<<<<< HEAD
               {/* </Route> */}
+=======
+             </Route> 
+
+>>>>>>> bb64adcd92454758e55c18f2df5c4b8d171fc73b
 
             <Route path="*" element={<Missing />} />
           </Route>

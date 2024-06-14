@@ -47,35 +47,8 @@ function AppointmentList() {
   return (
     <div className="appointment-list">
       <h2 className="h2List">Listado de Citas</h2>
-      <div className="filters">
-        <label>
-          <input
-            type="radio"
-            value="all"
-            checked={filter === "all"}
-            onChange={handleFilterChange}
-          />
-          Todas
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="finished"
-            checked={filter === "finished"}
-            onChange={handleFilterChange}
-          />
-          Finalizadas
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="available"
-            checked={filter === "available"}
-            onChange={handleFilterChange}
-          />
-          Disponibles
-        </label>
-      </div>
+      
+    
       <ul>
         {filteredAppointments.map((appointment) => (
           <li key={appointment.id}>

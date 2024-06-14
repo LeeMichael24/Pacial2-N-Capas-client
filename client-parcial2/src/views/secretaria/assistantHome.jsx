@@ -71,7 +71,7 @@ const AssistantHome = () => {
       console.error("Error approving appointment:", error);
       toast.error("Error al aprobar la cita");
     } finally {
-      setLoading(false);
+      setLoading(false);git
     }
   };
 

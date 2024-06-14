@@ -1,11 +1,12 @@
-import "./register.css";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 import axios from "axios";
+import "./register.css";
 
 function Register() {
   const [password, setPassword] = useState("");
@@ -14,20 +15,20 @@ function Register() {
   const navigate = useNavigate();
 
   const handleRegisterClick = async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!_#$]).{8,32}$/;
 
     if (!passwordRegex.test(password)) {
       toast.error("Mal formato de contraseña");
-      return; 
+      return;
     }
 
     try {
-      const response = await fetch('http://localhost:8080/api/auth/register', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8080/api/auth/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           username,
@@ -40,7 +41,7 @@ function Register() {
 
       if (response.ok) {
         toast.success("Registro exitoso!");
-        navigate('/login'); // Cambia '/login' por la ruta a la que deseas redirigir después del registro
+        navigate("/login"); // Cambia '/login' por la ruta a la que deseas redirigir después del registro
       } else {
         throw new Error(data.message || "Error al registrarse");
       }
@@ -49,11 +50,9 @@ function Register() {
     }
   };
 
-
-
   const reHandleLoginClick = (event) => {
     event.preventDefault();
-    navigate('/login'); // Navegar a la ruta de login
+    navigate("/login"); // Navegar a la ruta de login
   };
 
   return (
@@ -63,52 +62,61 @@ function Register() {
         <form>
           <ToastContainer />
           <Box
-            component="form"
+            component="div"
             sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
               "& .MuiTextField-root": { m: 1, width: "100%" },
             }}
             noValidate
             autoComplete="off"
           >
-            <div>
-              <TextField
-                id="outlined-Username"
-                label="Username"
-                className="textFieldRegister"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                fullWidth
-              />
-            </div>
-            <div>
-              <TextField
-                id="outlined-Email"
-                label="Email"
-                className="textFieldRegister"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                fullWidth
-              />
-            </div>
-            <div>
-              <TextField
-                id="outlined-password"
-                label="Password"
-                type="password"
-                className="textFieldRegister"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                fullWidth
-              />
-            </div>
+            <TextField
+              id="outlined-Username"
+              label="Username"
+              className="textFieldRegister"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              fullWidth
+            />
+            <TextField
+              id="outlined-Email"
+              label="Email"
+              className="textFieldRegister"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              fullWidth
+            />
+            <TextField
+              id="outlined-password"
+              label="Password"
+              type="password"
+              className="textFieldRegister"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              fullWidth
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              className="btnRegister"
+              onClick={handleRegisterClick}
+              sx={{ mt: 2 }}
+            >
+              Register
+            </Button>
+            <h2 className="h2Register">or</h2>
+            <Button
+              variant="contained"
+              color="secondary"
+              className="btnRegister"
+              onClick={reHandleLoginClick}
+              sx={{ mt: 2 }}
+            >
+              Login
+            </Button>
           </Box>
-          <button className="btnRegister" onClick={handleRegisterClick}>
-            Register
-          </button>
-          <h2 className="h2Register">or</h2>
-          <button className="btnRegister" onClick={reHandleLoginClick}>
-            Login
-          </button>
         </form>
       </div>
     </section>
