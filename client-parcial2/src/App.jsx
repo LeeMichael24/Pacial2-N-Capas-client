@@ -74,8 +74,8 @@ function App() {
               <Route path="/doctorHome/crearCita" element={<CrearCitaDoc />} />
               <Route path="/doctorHome/appointmentList" element={<AppointmentList />} />
               <Route path="/doctorHome/appointmentDetail/:appointmentId" element={<AppointmentDetail />} />
-              <Route path="/doctorHome/prescriptionPerId" element={< PrescriptionPerId/>} />
-             </Route> 
+              <Route path="/doctorHome/prescriptionPerId" element={<PrescriptionPerId />} />
+              </Route> 
 
 
 

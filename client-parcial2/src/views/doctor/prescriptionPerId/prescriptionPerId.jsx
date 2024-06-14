@@ -11,7 +11,7 @@ function PrescriptionPerId() {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const response = await fetch("http://localhost:8080/appointment/citas", {
+        const response = await fetch("http://localhost:8080/api/clinic/schedule1", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function PrescriptionPerId() {
 
   return (
     <div className="appointment-list">
-      <h2 className="h2ListApp">Buscar Prescripcion</h2>
+      <h2 className="h2ListApp"> Pacientes</h2>
 
       <ul>
         {filteredAppointments.map((appointment) => (
@@ -68,8 +68,7 @@ function PrescriptionPerId() {
             <div className={`appointment-item ${appointment.status === "Finalizado" ? "finished" : "available"}`}>
               <div>
                 <span>
-                  <h3>Paciente: {appointment.user.name}</h3>
-                  <p>Comentario: {appointment.commentary}</p>
+                  <h3>{appointment.user.name}</h3>
                   <p>ID: {appointment.user.id}</p>
                 </span>
               </div>
@@ -80,14 +79,14 @@ function PrescriptionPerId() {
       </ul>
 
       <div className="appointment-list">
-        <h2 className="h2ListApp">Buscar Prescripcion</h2>
+        <h2 className="h2ListApp">Buscar Prescripcion por ID de usuario</h2>
         <input
           type="text"
           value={userId}
           onChange={(e) => setUserId(e.target.value)}
           placeholder="Ingrese el ID del usuario"
         />
-        <button onClick={handleSearchClick}>Buscar Prescripción</button>
+        <button onClick={handleSearchClick}>Buscar</button>
         <ul>
           {prescriptions.map((prescription) => (
             <li key={prescription.id}>
