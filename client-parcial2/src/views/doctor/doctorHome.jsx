@@ -9,6 +9,7 @@ import React, { useState, useEffect } from "react";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import ContentPasteSearchIcon from '@mui/icons-material/ContentPasteSearch';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 
 function DoctorHome() {
   const [appointments, setAppointments] = useState([]);
@@ -61,12 +62,12 @@ function DoctorHome() {
     },
     {
       icon: <TextSnippetIcon />,
-      name: "Record médico",
+      name:"Inicio",
       path: "/doctorHome",
     },
     {
       icon: <FormatListBulletedIcon />,
-      name: "Citas",
+      name: "Agregar Prescripción",
       path: "/doctorHome/appointmentList",
     },
     {
@@ -74,6 +75,12 @@ function DoctorHome() {
       name: "Buscar Prescripción",
       path: "/doctorHome/prescriptionPerId",
     },
+    {
+      icon: <AssignmentTurnedInIcon />,
+      name: "Finalizar cita",
+      path: "/doctorHome/finalizarCita",
+    },
+
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
   ];
 

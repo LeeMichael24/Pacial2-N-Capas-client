@@ -18,6 +18,7 @@ import { AuthProvider } from './context/AuthProvider';
 import PrescriptionPerId from './views/doctor/prescriptionPerId/prescriptionPerId';
 import Admin from "./views/admin/admin";
 import AssistantHome from "./views/secretaria/assistantHome";
+import FinalizarCita from './views/doctor/finalizarCita/finalizarCita';
 
 
 
@@ -75,6 +76,7 @@ function App() {
               <Route path="/doctorHome/appointmentList" element={<AppointmentList />} />
               <Route path="/doctorHome/appointmentDetail/:appointmentId" element={<AppointmentDetail />} />
               <Route path="/doctorHome/prescriptionPerId" element={<PrescriptionPerId />} />
+              <Route path="/doctorHome/finalizarCita" element={<FinalizarCita />} />
               </Route> 
 
 
