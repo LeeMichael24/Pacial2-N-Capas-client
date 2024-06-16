@@ -3,7 +3,7 @@ import { toast, ToastContainer } from "react-toastify";
 import './crearRecordAssit.css'
 import Navbar from '../../../components/navbar/navbar';
 import Menu from '../../../components/menu/menu';
-
+import axios from "axios";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
@@ -16,8 +16,8 @@ function CrearRecordAssit() {
     const buttons = [
         {
           icon: <TextSnippetIcon />,
-          name: "Crear Record médico",
-          path: "/asistant/user/record",
+          name: "Record de pacientes",
+          path: "/doctorHome/crearRecord",
         },
         {
           icon: <FormatListBulletedIcon />,

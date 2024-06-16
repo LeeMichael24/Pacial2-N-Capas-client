@@ -18,6 +18,7 @@ import Admin from "./views/admin/admin";
 import AssistantHome from "./views/secretaria/assistantHome";
 import CrearRecordAssit from './views/secretaria/crearRecordAsst/crearRecordAssit';
 import FinalizarCita from './views/doctor/finalizarCita/finalizarCita';
+import RecordDoctor from './views/doctor/crearRecord/recordDoctor';
 
 
 
@@ -75,6 +76,7 @@ function App() {
               <Route path="/doctorHome/appointmentDetail/:appointmentId" element={<AppointmentDetail />} />
               <Route path="/doctorHome/prescriptionPerId" element={<PrescriptionPerId />} />
               <Route path="/doctorHome/finalizarCita" element={<FinalizarCita />} />
+              <Route path="/doctorHome/crearRecord" element={<RecordDoctor />} />
               </Route> 
 
 

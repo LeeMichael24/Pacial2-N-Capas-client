@@ -65,7 +65,7 @@ function DoctorHome() {
     {
       icon: <FormatListBulletedIcon />,
       name: "Record de pacientes",
-      path: "/doctorHome/crearCita",
+      path: "/doctorHome/crearRecord",
     },
     {
       icon: <PlaylistAddCircleIcon />,
