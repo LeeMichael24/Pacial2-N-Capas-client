@@ -18,6 +18,7 @@ import { AuthProvider } from './context/AuthProvider';
 import PrescriptionPerId from './views/doctor/prescriptionPerId/prescriptionPerId';
 import Admin from "./views/admin/admin";
 import AssistantHome from "./views/secretaria/assistantHome";
+/* import MiCita from './views/paciente/miCita/miCita'; */
 
 
 
@@ -49,10 +50,6 @@ function App() {
               <Route
                 path="/paciente/user/record"
                 element={<RecordPaciente />}
-              />
-              <Route
-                path="/paciente/user/record/:id"
-                element={<RecordDetailPaciente />}
               />
             </Route>
 

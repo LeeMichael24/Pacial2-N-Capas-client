@@ -25,8 +25,7 @@ function HomeUser() {
   const buttons = [
     { icon: <AdminPanelSettingsIcon />, name: "SUDO", path: "/admin" },
     { icon: < LocalHospitalIcon />, name: "DOCT", path: "/doctorHome" },
-    { icon: <SupervisorAccountIcon />, name: "PSNT", path: "/login" },
-    { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
+    { icon: <SupervisorAccountIcon />, name: "PSNT", path: "/paciente" },
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
   ];
 
