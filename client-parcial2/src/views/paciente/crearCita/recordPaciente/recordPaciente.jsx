@@ -100,6 +100,7 @@ function RecordPaciente() {
                     <h3>Historial ID: {item.id}</h3>
                     <p>Fecha: {new Date(item.date).toLocaleDateString()}</p>
                     <p>Comentario: {item.comment}</p>
+                    
                   </div>
                 ))}
               </div>

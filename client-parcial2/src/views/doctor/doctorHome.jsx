@@ -114,13 +114,15 @@ function DoctorHome() {
           {/* Agregar campo de entrada para la fecha y botón de búsqueda */}
           <div className="search-container">
             <h2 className="h2List">Buscar Citas por Fecha</h2>
+            <div className="adentro">
             <input
               type="date"
               value={appDate}
               onChange={handleDateChange}
               placeholder="Ingrese la fecha de la cita"
             />
-            <button onClick={handleSearchClick}>Buscar</button>
+            <button className="boton" onClick={handleSearchClick}>Buscar</button>
+            </div>
           </div>
         </div>
         <div className="right-container-user">
@@ -131,4 +133,4 @@ function DoctorHome() {
   );
 }
 
-export default DoctorHome;
+export default DoctorHome;

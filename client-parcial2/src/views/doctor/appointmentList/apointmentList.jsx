@@ -1,11 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./apointmentList.css"; 
+import "./apointmentList.css";
+
+
+// Iconos
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import ContentPasteSearchIcon from '@mui/icons-material/ContentPasteSearch';
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
+import PlaylistAddCircleIcon from '@mui/icons-material/PlaylistAddCircle';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import Navbar from "../../../components/navbar/navbar";
+import Menu from "../../../components/menu/menu";
 
 function AppointmentList() {
   const [appointments, setAppointments] = useState([]);
   const [filter, setFilter] = useState("all");
   const navigate = useNavigate();
+
+  const buttons = [
+    {
+      icon: <TextSnippetIcon />,
+      name: "Inicio",
+      path: "/doctorHome",
+    },
+    {
+      icon: <FormatListBulletedIcon />,
+      name: "Record de pacientes",
+      path: "/doctorHome/crearRecord",
+    },
+    {
+      icon: <PlaylistAddCircleIcon />,
+      name: "Agregar Prescripción",
+      path: "/doctorHome/appointmentList",
+    },
+    {
+      icon: <ContentPasteSearchIcon />,
+      name: "Buscar Prescripción",
+      path: "/doctorHome/prescriptionPerId",
+    },
+    {
+      icon: <AssignmentTurnedInIcon />,
+      name: "Finalizar cita",
+      path: "/doctorHome/finalizarCita",
+    },
+
+    { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
+  ];
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -45,32 +86,40 @@ function AppointmentList() {
   };
 
   return (
-    <div className="appointment-list">
-      <h2 className="h2List">Listado de Citas</h2>
-      
-    
-      <ul>
-        {filteredAppointments.map((appointment) => (
-          <li key={appointment.id}>
-            <Link to={`/doctorHome/appointmentDetail/${appointment.id}`}>
-              <div
-                className={`appointment-item ${appointment.status === "Finalizado" ? "finished" : "available"}`}
-              >
-                <div>
-                  
-                  <h3>{appointment.commentary}</h3>
-                  <p>Paciente: {appointment.user.name}</p>
-                  <p>Fecha Solicitada: {appointment.requestedDate}</p>
-                
-              
-                </div>
-                <button onClick={() => handleAddPrescriptionClick(appointment.id)}>Agregar Prescripción</button>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <section className="PadreHomeUser">
+      <Navbar />
+      <div className="UserHome">
+        <div className="left-container-user">
+          <h2 className="h2List">Listado de Citas</h2>
+
+
+          <ul>
+            {filteredAppointments.map((appointment) => (
+              <li key={appointment.id}>
+                <Link to={`/doctorHome/appointmentDetail/${appointment.id}`}>
+                  <div
+                    className={`appointment-item ${appointment.status === "Finalizado" ? "finished" : "available"}`}
+                  >
+                    <div>
+
+                      <h3>{appointment.commentary}</h3>
+                      <p>Paciente: {appointment.user.name}</p>
+                      <p>Fecha Solicitada: {appointment.requestedDate}</p>
+
+
+                    </div>
+                    <button onClick={() => handleAddPrescriptionClick(appointment.id)}>Agregar Prescripción</button>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="right-container-user">
+          <Menu buttons={buttons} />
+        </div>
+      </div>
+    </section>
   );
 }
 

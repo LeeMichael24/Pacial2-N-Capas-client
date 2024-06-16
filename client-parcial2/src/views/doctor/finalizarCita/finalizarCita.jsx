@@ -1,12 +1,55 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
+// Iconos
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import ContentPasteSearchIcon from '@mui/icons-material/ContentPasteSearch';
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
+import PlaylistAddCircleIcon from '@mui/icons-material/PlaylistAddCircle';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import Navbar from "../../../components/navbar/navbar";
+import Menu from "../../../components/menu/menu";
+
+
 function FinalizarCita() {
     const [appointments, setAppointments] = useState([]);
     const [filter, setFilter] = useState("all");
     const [appDate, setAppDate] = useState(""); // Estado para la fecha de la cita
     const [appointmentId, setAppointmentId] = useState(""); // Estado para el ID de la cita a finalizar
     const navigate = useNavigate();
+
+    const buttons = [
+        {
+            icon: <TextSnippetIcon />,
+            name: "Inicio",
+            path: "/doctorHome",
+        },
+        {
+            icon: <FormatListBulletedIcon />,
+            name: "Record de pacientes",
+            path: "/doctorHome/crearRecord",
+        },
+        {
+            icon: <PlaylistAddCircleIcon />,
+            name: "Agregar Prescripción",
+            path: "/doctorHome/appointmentList",
+        },
+        {
+            icon: <ContentPasteSearchIcon />,
+            name: "Buscar Prescripción",
+            path: "/doctorHome/prescriptionPerId",
+        },
+        {
+            icon: <AssignmentTurnedInIcon />,
+            name: "Finalizar cita",
+            path: "/doctorHome/finalizarCita",
+        },
+
+        { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
+    ];
+
+
 
     const fetchAppointments = async (date = "") => {
         try {
@@ -73,6 +116,7 @@ function FinalizarCita() {
 
     return (
         <section className="PadreHomeUser">
+            <Navbar />
             <div className="UserHome">
                 <div className="left-container-user leftDoctor">
                     <div className="appointment-list">
@@ -99,26 +143,34 @@ function FinalizarCita() {
                     {/* Agregar campo de entrada para la fecha y botón de búsqueda */}
                     <div className="search-container">
                         <h2 className="h2List">Buscar Citas por Fecha</h2>
-                        <input
-                            type="date"
-                            value={appDate}
-                            onChange={handleDateChange}
-                            placeholder="Ingrese la fecha de la cita"
-                        />
-                        <button onClick={handleSearchClick}>Buscar</button>
+                        <div className="adentro2">
+                            <input
+                                type="date"
+                                value={appDate}
+                                onChange={handleDateChange}
+                                placeholder="Ingrese la fecha de la cita"
+                            />
+                            <button className="boton" onClick={handleSearchClick}>Buscar</button>
+                        </div>
                     </div>
 
                     {/* Agregar campo de entrada para el ID de la cita y botón para finalizar */}
                     <div className="finish-container">
                         <h2 className="h2List">Finalizar Cita</h2>
-                        <input
-                            type="text"
-                            value={appointmentId}
-                            onChange={handleAppointmentIdChange}
-                            placeholder="Ingrese el ID de la cita"
-                        />
-                        <button onClick={handleFinishAppointmentClick}>Finalizar</button>
+                        <div className="adentro2">
+                            <input
+                                type="text"
+                                value={appointmentId}
+                                onChange={handleAppointmentIdChange}
+                                placeholder="Ingrese el ID de la cita"
+                            />
+                            <button className="boton" onClick={handleFinishAppointmentClick}>Finalizar</button>
+                        </div>
                     </div>
+                </div>
+
+                <div className="right-container-user">
+                    <Menu buttons={buttons} />
                 </div>
             </div>
         </section>

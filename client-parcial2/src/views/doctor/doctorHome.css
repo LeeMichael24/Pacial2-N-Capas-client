@@ -45,3 +45,19 @@
     background-color: var(--selection-day-hover-color);
   }
   
+
+  .search-container{
+    width: 250px;
+  }
+
+  .adentro{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .boton{
+    margin: auto;
+  }

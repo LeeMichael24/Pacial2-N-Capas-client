@@ -1,3 +1,18 @@
 .h2ListApp{
     margin-bottom: 40px;
 }
+
+
+.appointment-item.available {
+    background-color: #d4edda;
+    width: 600px;
+}
+
+
+.adentro2{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
