@@ -10,6 +10,7 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import ContentPasteSearchIcon from '@mui/icons-material/ContentPasteSearch';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
+import PlaylistAddCircleIcon from '@mui/icons-material/PlaylistAddCircle';
 
 function DoctorHome() {
   const [appointments, setAppointments] = useState([]);
@@ -55,11 +56,7 @@ function DoctorHome() {
   });
 
   const buttons = [
-    {
-      icon: <LogoutRoundedIcon />,
-      name: "Crear cita médica",
-      path: "/doctorHome/crearCita",
-    },
+    
     {
       icon: <TextSnippetIcon />,
       name:"Inicio",
@@ -67,6 +64,11 @@ function DoctorHome() {
     },
     {
       icon: <FormatListBulletedIcon />,
+      name: "Record de pacientes",
+      path: "/doctorHome/crearCita",
+    },
+    {
+      icon: <PlaylistAddCircleIcon />,
       name: "Agregar Prescripción",
       path: "/doctorHome/appointmentList",
     },
@@ -99,8 +101,8 @@ function DoctorHome() {
                     className={`appointment-item ${appointment.status === "Finalizado" ? "finished" : "available"}`}
                   >
                     <div>
-                      <h3>{appointment.commentary}</h3>
-                      <p>Paciente: {appointment.user.name}</p>
+                      <h3>Paciente: {appointment.user.name}</h3>
+                      <p>{appointment.commentary}</p>
                       <p>Fecha Solicitada: {appointment.requestedDate}</p>
                     </div>
                   </div>
