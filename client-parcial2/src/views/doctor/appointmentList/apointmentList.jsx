@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./apointmentList.css"; // Ajustar nombre del archivo de estilos si es necesario
+import "./apointmentList.css"; 
 
 function AppointmentList() {
   const [appointments, setAppointments] = useState([]);
@@ -10,7 +10,7 @@ function AppointmentList() {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const response = await fetch("http://localhost:8080/appointment/citas", {
+        const response = await fetch("http://localhost:8080/api/clinic/schedule1", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -57,17 +57,12 @@ function AppointmentList() {
                 className={`appointment-item ${appointment.status === "Finalizado" ? "finished" : "available"}`}
               >
                 <div>
+                  
                   <h3>{appointment.commentary}</h3>
-                  <p>Fecha Solicitada: {appointment.requestedDate}</p>
                   <p>Paciente: {appointment.user.name}</p>
-                  <p>Estado: {appointment.status}</p>
-                  <h4>Prescripciones:</h4>
-                  {appointment.prescriptions.map((prescription, index) => (
-                    <div key={index}>
-                      <p>Medicina: {prescription.medicine}</p>
-                      <p>Dosis: {prescription.dose}</p>
-                    </div>
-                  ))}
+                  <p>Fecha Solicitada: {appointment.requestedDate}</p>
+                
+              
                 </div>
                 <button onClick={() => handleAddPrescriptionClick(appointment.id)}>Agregar Prescripción</button>
               </div>

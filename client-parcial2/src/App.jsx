@@ -17,7 +17,7 @@ import PrescriptionPerId from './views/doctor/prescriptionPerId/prescriptionPerI
 import Admin from "./views/admin/admin";
 import AssistantHome from "./views/secretaria/assistantHome";
 import CrearRecordAssit from './views/secretaria/crearRecordAsst/crearRecordAssit';
-/* import MiCita from './views/paciente/miCita/miCita'; */
+import FinalizarCita from './views/doctor/finalizarCita/finalizarCita';
 
 
 
@@ -73,8 +73,9 @@ function App() {
               <Route path="/doctorHome" element={<DoctorHome />} />
               <Route path="/doctorHome/appointmentList" element={<AppointmentList />} />
               <Route path="/doctorHome/appointmentDetail/:appointmentId" element={<AppointmentDetail />} />
-              <Route path="/doctorHome/prescriptionPerId" element={< PrescriptionPerId/>} />
-             </Route> 
+              <Route path="/doctorHome/prescriptionPerId" element={<PrescriptionPerId />} />
+              <Route path="/doctorHome/finalizarCita" element={<FinalizarCita />} />
+              </Route> 
 
 
 

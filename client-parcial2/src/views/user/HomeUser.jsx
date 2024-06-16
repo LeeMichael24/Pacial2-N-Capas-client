@@ -15,6 +15,7 @@ import axios from "../../api/axios"; // Importa la instancia de Axios
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import RecentActorsIcon from '@mui/icons-material/RecentActors';
 
 function HomeUser() {
   const navigate = useNavigate();
@@ -24,10 +25,11 @@ function HomeUser() {
 
   const buttons = [
     { icon: <AdminPanelSettingsIcon />, name: "SUDO", path: "/admin" },
-    { icon: < LocalHospitalIcon />, name: "DOCT", path: "/doctorHome" },
+    { icon: <LocalHospitalIcon />, name: "DOCT", path: "/doctorHome" },
     { icon: <SupervisorAccountIcon />, name: "PSNT", path: "/paciente" },
-    { icon: <SupervisorAccountIcon />, name: "ASST", path: "/asistant" },
+    { icon: <RecentActorsIcon />, name: "ASST", path: "/asistant" },
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
+
   ];
 
   const handlerClick = (e) => {
