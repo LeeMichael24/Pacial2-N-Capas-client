@@ -1,82 +1,89 @@
-.h1Assis{
-    margin-bottom: 40px;
+.h1Assis {
+  margin-bottom: 40px;
 }
 
-  .left-container-user {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.left-container-inside {
+  margin-top: 0px; /* Ajuste para mover el formulario arriba en dispositivos móviles */
+}
+
+.appointment-list {
+  width: 100%;
+  max-width: 500px;
+}
+
+.appointment-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* Estilos del formulario de aprobación */
+.approve-form {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 2rem;
+}
+
+.approve-form h2 {
+  margin-bottom: 10px;
+}
+
+.approve-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.approve-form input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.approve-form button {
+  padding: 10px 20px;
+  background-color: var(--selection-day-color);
+  color: var(--text-inverted);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.approve-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .left-container-inside {
+    margin-top: 0; /* Eliminar el margen superior en dispositivos móviles */
   }
-  
+
+  .approve-form,
   .appointment-list {
-    margin-top: 20px;
-  }
-  
-  .appointment-item {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .appointment-item p {
-    margin: 5px 0;
-  }
-  
-  .appointment-item button {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 10px;
     margin-right: 10px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
   }
-  
-  .appointment-item button:hover {
-    background-color: #ddd;
+
+  .appointment-item {
+    padding: 8px;
   }
-  
+
   .approve-form {
-    background-color: #f1f1f1;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     padding: 15px;
-    margin-top: 20px;
   }
-  
-  .approve-form h2 {
-    margin-bottom: 10px;
+
+  .approve-form input {
+    font-size: 14px;
   }
-  
-  .approve-form label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .approve-form input[type="time"],
-  .approve-form input[type="number"],
-  .approve-form input[type="text"] {
-    width: calc(100% - 20px);
-    padding: 8px 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-top: 5px;
-  }
-  
-  .approve-form button {
-    margin-top: 10px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 3px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .approve-form button:hover {
-    background-color: #0056b3;
-  }
-  
+}

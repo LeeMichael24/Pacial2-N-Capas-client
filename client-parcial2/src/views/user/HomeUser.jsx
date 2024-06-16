@@ -26,6 +26,7 @@ function HomeUser() {
     { icon: <AdminPanelSettingsIcon />, name: "SUDO", path: "/admin" },
     { icon: < LocalHospitalIcon />, name: "DOCT", path: "/doctorHome" },
     { icon: <SupervisorAccountIcon />, name: "PSNT", path: "/paciente" },
+    { icon: <SupervisorAccountIcon />, name: "ASST", path: "/asistant" },
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
   ];
 

@@ -8,16 +8,15 @@ import HomeUser from './views/user/HomeUser';
 import PacienteHome from './views/paciente/pacienteHome';
 import CrearCitaPaciente from './views/paciente/crearCita/crearCitaPaciente';
 import RecordPaciente from './views/paciente/crearCita/recordPaciente/recordPaciente';
-import RecordDetailPaciente from './views/paciente/crearCita/recordPaciente/recordDetailPaciente/recordDetailPaciente';
 import DoctorHome from './views/doctor/doctorHome';
 import AppointmentList from './views/doctor/appointmentList/apointmentList'
 import AppointmentDetail from './views/doctor/appointmentList/appointmentDetail/AppointmentDetail'
-import CrearCitaDoc from './views/doctor/crearCitaDoc/crearCitaDoc'
 import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './context/AuthProvider';
 import PrescriptionPerId from './views/doctor/prescriptionPerId/prescriptionPerId';
 import Admin from "./views/admin/admin";
 import AssistantHome from "./views/secretaria/assistantHome";
+import CrearRecordAssit from './views/secretaria/crearRecordAsst/crearRecordAssit';
 /* import MiCita from './views/paciente/miCita/miCita'; */
 
 
@@ -56,6 +55,10 @@ function App() {
 
             {/* ASISTANT */}
             <Route path="/asistant" element={<AssistantHome />} />
+            <Route
+                path="/asistant/user/record"
+                element={<CrearRecordAssit />}
+            />
 
 
 
@@ -68,7 +71,6 @@ function App() {
             {/* doctor */}
             <Route element={<PrivateRoute allowedRoles={['DOCT']} />}> 
               <Route path="/doctorHome" element={<DoctorHome />} />
-              <Route path="/doctorHome/crearCita" element={<CrearCitaDoc />} />
               <Route path="/doctorHome/appointmentList" element={<AppointmentList />} />
               <Route path="/doctorHome/appointmentDetail/:appointmentId" element={<AppointmentDetail />} />
               <Route path="/doctorHome/prescriptionPerId" element={< PrescriptionPerId/>} />
