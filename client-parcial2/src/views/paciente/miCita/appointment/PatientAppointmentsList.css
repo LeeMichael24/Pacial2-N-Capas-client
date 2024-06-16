@@ -1,0 +1,42 @@
+.appointment-list {
+    margin-top: 20px;
+  }
+  
+  .appointment-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .appointment-item p {
+    margin: 5px 0;
+  }
+  
+  .appointment-item ul {
+    padding-left: 20px;
+  }
+  
+  .appointment-item li {
+    list-style-type: disc;
+  }
+  
+  .left-container-user {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .right-container-user {
+    flex: 0 0 250px;
+    padding: 20px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  

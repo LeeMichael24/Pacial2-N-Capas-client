@@ -22,6 +22,7 @@ import FinalizarCita from './views/doctor/finalizarCita/finalizarCita';
 
 
 
+
 function App() {
   return (
     <AuthProvider>
@@ -50,10 +51,6 @@ function App() {
               <Route
                 path="/paciente/user/record"
                 element={<RecordPaciente />}
-              />
-              <Route
-                path="/paciente/user/record/:id"
-                element={<RecordDetailPaciente />}
               />
             </Route>
 
