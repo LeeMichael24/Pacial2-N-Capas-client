@@ -9,3 +9,39 @@
 .leftDoctor::-webkit-scrollbar {
     display: none; /* Oculta barra de desplazamiento en Chrome, Safari y Opera */
 }
+
+.add-entry-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .add-entry-form h2 {
+    margin-bottom: 20px;
+  }
+  
+  .add-entry-form label {
+    margin-bottom: 10px;
+  }
+  
+  .add-entry-form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .add-entry-form button {
+    padding: 10px 20px;
+    background-color: var(--selection-day-color);
+    color: var(--text-inverted);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-entry-form button:hover {
+    background-color: var(--selection-day-hover-color);
+  }
+  
