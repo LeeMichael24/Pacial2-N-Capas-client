@@ -14,20 +14,14 @@ function CrearCitaPaciente() {
 
     const buttons = [
         {
-            icon: <LogoutRoundedIcon />,
-            name: "Crear cita médica",
-            path: "/paciente/appointment/request",
-          },
-        {
           icon: <LogoutRoundedIcon />,
           name: "Record médico",
           path: "/paciente/user/record",
         },
-        /* TODO: Mis prescriociones medicas */
         {
           icon: <LogoutRoundedIcon />,
-          name: "Prescipciones médicas",
-          path: "/paciente/misPrescipciones",
+          name: "Mis Citas",
+          path: "/paciente/appointment/own",
         },
         { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
       ];

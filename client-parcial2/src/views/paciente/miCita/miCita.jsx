@@ -1,4 +1,4 @@
-import React from "react";
+import './miCita.css'
 import Navbar from "../../../components/navbar/navbar";
 import Menu from "../../../components/menu/menu";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
@@ -8,13 +8,13 @@ function MiCita() {
   const buttons = [
     {
       icon: <LogoutRoundedIcon />,
-      name: "Crear cita médica",
-      path: "/paciente/appointment/request",
+      name: "Record médico",
+      path: "/paciente/user/record",
     },
     {
       icon: <LogoutRoundedIcon />,
       name: "Mis Citas",
-      path: "/paciente/appoinmet/own",
+      path: "/paciente/appointment/own",
     },
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
   ];
@@ -24,7 +24,7 @@ function MiCita() {
       <Navbar />
       <div className="UserHome">
         <div className="left-container-user">
-          <div className="pacienteContainer">
+          <div className="pacienteContainer pacienteCita">
             <h1>Mis Citas</h1>
             <div>
                 <PatientAppointmentsList />

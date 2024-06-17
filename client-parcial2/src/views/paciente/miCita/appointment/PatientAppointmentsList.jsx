@@ -28,6 +28,7 @@ const PatientAppointments = () => {
           },
         }
       );
+      console.log("Appointments data:", response.data.data); // Añadir este console.log
       setAppointments(response.data.data);
     } catch (error) {
       console.error("Error fetching appointments:", error);
@@ -49,6 +50,7 @@ const PatientAppointments = () => {
           placeholder="Estado de la cita"
         />
       </label>
+      <ToastContainer />
       {loading ? (
         <p>Cargando citas...</p>
       ) : (
@@ -66,19 +68,20 @@ const PatientAppointments = () => {
                 <p>
                   <strong>Estado:</strong> {appointment.status}
                 </p>
-                {appointment.prescriptions &&
-                  appointment.prescriptions.length > 0 && (
-                    <div>
-                      <strong>Prescripciones:</strong>
-                      <ul>
-                        {appointment.prescriptions.map(
-                          (prescription, index) => (
-                            <li key={index}>{prescription.description}</li>
-                          )
-                        )}
-                      </ul>
-                    </div>
-                  )}
+                {appointment.prescriptions && appointment.prescriptions.length > 0 && (
+                  <div>
+                    <strong>Prescripciones:</strong>
+                    <ul className="prescriptions-list">
+                      {appointment.prescriptions.map((prescription) => (
+                        <li key={prescription.id}>
+                          Medicina: {prescription.medicine} <br />
+                          Dosis: {prescription.dose} <br />
+                          Fecha Fin: {prescription.fechaFin}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             ))
           ) : (

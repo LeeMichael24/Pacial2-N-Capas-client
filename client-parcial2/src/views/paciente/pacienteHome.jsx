@@ -8,13 +8,13 @@ function PacienteHome() {
   const buttons = [
     {
       icon: <LogoutRoundedIcon />,
-      name: "Crear cita médica",
-      path: "/paciente/appointment/request",
+      name: "Record médico",
+      path: "/paciente/user/record",
     },
     {
       icon: <LogoutRoundedIcon />,
-      name: "Record médico",
-      path: "/paciente/user/record",
+      name: "Mis Citas",
+      path: "/paciente/appointment/own",
     },
     { icon: <LogoutRoundedIcon />, name: "Cerrar sesión", path: "/login" },
   ];

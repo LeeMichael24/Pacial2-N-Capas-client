@@ -6,7 +6,6 @@ import Login from "./components/login/login";
 import Register from "./components/register/register";
 import HomeUser from "./views/user/HomeUser";
 import PacienteHome from "./views/paciente/pacienteHome";
-import CrearCitaPaciente from "./views/paciente/crearCita/crearCitaPaciente";
 import RecordPaciente from "./views/paciente/crearCita/recordPaciente/recordPaciente";
 import DoctorHome from "./views/doctor/doctorHome";
 import AppointmentList from "./views/doctor/appointmentList/apointmentList";
@@ -19,6 +18,7 @@ import AssistantHome from "./views/secretaria/assistantHome";
 import CrearRecordAssit from "./views/secretaria/crearRecordAsst/crearRecordAssit";
 import FinalizarCita from "./views/doctor/finalizarCita/finalizarCita";
 import RecordDoctor from "./views/doctor/crearRecord/recordDoctor";
+import MiCita from "./views/paciente/miCita/miCita";
 
 function App() {
   return (
@@ -41,13 +41,17 @@ function App() {
             {/* Paciente */}
             <Route element={<PrivateRoute allowedRoles={["PSNT"]} />}>
               <Route path="/paciente" element={<PacienteHome />} />
-              <Route
+              {/* <Route
                 path="/paciente/appointment/request"
                 element={<CrearCitaPaciente />}
-              />
+              /> */}
               <Route
                 path="/paciente/user/record"
                 element={<RecordPaciente />}
+              />
+              <Route
+                path="/paciente/appointment/own"
+                element={<MiCita />}
               />
             </Route>
 
