@@ -98,7 +98,7 @@ function RecordPaciente() {
                 {historial.map((item) => (
                   <div key={item.id} className="historial-card">
                     <h3>Historial ID: {item.id}</h3>
-                    <p>Fecha: {new Date(item.date).toLocaleDateString()}</p>
+                    <p>Fecha: {item.date}</p>
                     <p>Comentario: {item.comment}</p>
                     
                   </div>

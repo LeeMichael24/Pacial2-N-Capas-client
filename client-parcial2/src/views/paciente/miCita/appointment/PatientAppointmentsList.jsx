@@ -59,8 +59,7 @@ const PatientAppointments = () => {
             appointments.map((appointment) => (
               <div key={appointment.id} className="appointment-item">
                 <p>
-                  <strong>Fecha solicitada:</strong>{" "}
-                  {new Date(appointment.requestedDate).toLocaleDateString()}
+                  <strong>Fecha solicitada: {appointment.requestedDate}</strong>{" "}
                 </p>
                 <p>
                   <strong>Comentario:</strong> {appointment.commentary}
